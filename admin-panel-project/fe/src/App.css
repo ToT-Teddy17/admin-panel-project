@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.SideBar {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+a {
+  text-decoration: none;
+}
