@@ -6,20 +6,14 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Route, Router, Routes, Link } from "react-router-dom";
-
+import PersonIcon from "@mui/icons-material/Person";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 const drawerWidth = 240;
-
 function SideBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -27,41 +21,22 @@ function SideBar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
   const drawer = (
     <div>
       <Toolbar />
       <Divider />
       <List>
-        <ListItemButton>
-          <Link to={"/users"}>
-            <InboxIcon /> Users
-          </Link>
+        <ListItemButton to={"/users"}>
+          <PersonIcon /> | Users
         </ListItemButton>
         <hr />
-        <ListItemButton>
-          <Link to={"/product"}>
-            <MailIcon /> Product
-          </Link>
+        <ListItemButton to={"/product"}>
+          <ShoppingBasketIcon />| Product
         </ListItemButton>
       </List>
-      {/* <List>
-        {["Product", "Users"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List> */}
-
       <Divider />
     </div>
   );
-
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
