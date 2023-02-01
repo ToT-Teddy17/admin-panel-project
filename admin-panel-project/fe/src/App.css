@@ -45,3 +45,47 @@
 a {
   text-decoration: none;
 }
+.productfirstpage {
+  margin-left: 250px;
+}
+.users {
+  margin-top: 100px;
+  margin-left: 250px;
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+.user {
+  display: flex;
+  justify-content: space-between;
+}
+.useradd {
+  margin-top: 20px;
+  margin-left: 250px;
+  margin-right: 30px;
+  margin-bottom: 20px;
+  display: grid;
+  row-gap: 10px;
+  border-radius: 20px;
+}
+.useraddhead {
+  background-color: #1976d2;
+  text-align: start;
+  color: aliceblue;
+}
+.search {
+  background-color: #1976d2;
+  width: 180px;
+  height: 40px;
+  border-radius: 20px;
+}
+.firstPage {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-left: 250px;
+  margin-right: 30px;
+  margin-bottom: 20px;
+
+  row-gap: 10px;
+  border-radius: 20px;
+}
