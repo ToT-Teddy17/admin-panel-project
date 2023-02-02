@@ -11,8 +11,12 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import Stack from "@mui/material/Stack";
+import { useState, useEffect } from "react";
 
 function UsersAdd() {
+  const [users, setUsers] = useState([]);
+  const [isUpdate, setIsUpdate] = useState(false);
+  // const [currentUser, setCurrentUser] = useState();
   const [value, setValue] = React.useState("admin");
   const [checked, setChecked] = React.useState(true);
 
@@ -22,13 +26,61 @@ function UsersAdd() {
   const handleChanged = (event) => {
     setChecked(event.target.checked);
   };
+  useEffect(() => {
+    fetchAllData();
+  }, []);
+
+  async function fetchAllData() {
+    // fetch a data from localhost:8080/users
+    const FETCHED_DATA = await fetch(URL); // Response
+    const FETCHED_JSON = await FETCHED_DATA.json(); // {status: 'success', data: [{id: ....}]}
+    console.log(FETCHED_JSON);
+    setUsers(FETCHED_JSON.data);
+  }
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!isUpdate) {
+      const postData = {
+        username: e.target.username.value,
+        age: e.target.age.value,
+      };
+
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData),
+      };
+
+      const FETCHED_DATA = await fetch(URL, options);
+      const FETCHED_JSON = await FETCHED_DATA.json();
+      setUsers(FETCHED_JSON.data);
+    }
+
+    const FETCHED_DATA = await fetch(URL);
+    const FETCHED_JSON = await FETCHED_DATA.json();
+    setUsers(FETCHED_JSON.data);
+    setIsUpdate(false);
+    // setCurrentUser(newUser);
+  }
 
   return (
     <div className="useradd">
       <div className="useraddhead">App > Users > New</div>
       <br />
-      <TextField required id="outlined-required" label="First Name" />
-      <TextField required id="outlined-required" label="Last Name" />
+      <TextField
+        name="firstname"
+        required
+        id="outlined-required"
+        label="First Name"
+      />
+      <TextField
+        name="lastname"
+        required
+        id="outlined-required"
+        label="Last Name"
+      />
       <TextField
         id="outlined-number"
         label="Phone Number"
@@ -37,7 +89,13 @@ function UsersAdd() {
           shrink: true,
         }}
       />
-      <TextField required id="outlined-required" label="Email" type={"email"} />
+      <TextField
+        name="email"
+        required
+        id="outlined-required"
+        label="Email"
+        type={"email"}
+      />
       <FormControl>
         <FormLabel id="demo-controlled-radio-buttons-group"></FormLabel>
         <RadioGroup
@@ -58,13 +116,16 @@ function UsersAdd() {
       /> */}
       <UploadButtons />
       <TextField
+        name="password"
         id="outlined-password-input"
         label="Password"
         type="password"
         autoComplete="current-password"
       />
       <Stack direction="row" spacing={3}>
-        <Button variant="contained">Save</Button>
+        <Button type="submit" variant="contained">
+          Save
+        </Button>
         <Button color="error" variant="outlined" startIcon={<DeleteIcon />}>
           Delete
         </Button>
