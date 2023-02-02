@@ -4,6 +4,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import { styled, alpha } from "@mui/material/styles";
+import ProductTable from "./ProductTable";
 
 export default function ProductFirstPage() {
   const Search = styled("div")(({ theme }) => ({
@@ -63,6 +64,7 @@ export default function ProductFirstPage() {
           </Search>
         </div>
       </div>
+      <ProductTable />
     </div>
   );
 }
