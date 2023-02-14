@@ -67,7 +67,7 @@ function UsersAdd() {
 
   return (
     <div className="useradd">
-      <div className="useraddhead">App > Users > New</div>
+      <div className="useraddhead">App Users New</div>
       <br />
       <TextField
         name="firstname"
