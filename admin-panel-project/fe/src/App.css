@@ -89,3 +89,7 @@ a {
   row-gap: 10px;
   border-radius: 20px;
 }
+.userrole{
+  text-align: start;
+  color: gray;
+}
