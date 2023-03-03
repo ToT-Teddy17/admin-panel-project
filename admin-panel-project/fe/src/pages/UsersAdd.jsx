@@ -12,6 +12,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
+import UserRole from "../components/UserRole";
 
 function UsersAdd() {
   const [users, setUsers] = useState([]);
@@ -67,7 +68,7 @@ function UsersAdd() {
 
   return (
     <div className="useradd">
-      <div className="useraddhead">App > Users > New</div>
+      <div className="useraddhead">App Users New</div>
       <br />
       <TextField
         name="firstname"
@@ -104,8 +105,7 @@ function UsersAdd() {
           value={value}
           onChange={handleChange}
         >
-          <FormControlLabel value="admin" control={<Radio />} label="admin" />
-          <FormControlLabel value="user" control={<Radio />} label="user" />
+          <UserRole />
         </RadioGroup>
       </FormControl>
 
