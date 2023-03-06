@@ -9,7 +9,7 @@ export default function UserRole() {
   const [inputValue, setInputValue] = React.useState("");
 
   return (
-    <div>
+    <div className="userrole">
       <div>{`value: ${value !== null ? `'${value}'` : "null"}`}</div>
       <div>{`inputValue: '${inputValue}'`}</div>
       <br />
